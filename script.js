@@ -101,17 +101,54 @@ function generateQuestionAnswer(question) {
     'what is ai': 'AI (Artificial Intelligence) refers to the simulation of human intelligence in machines that are programmed to think and learn like humans. It encompasses various technologies including machine learning, natural language processing, computer vision, and robotics.',
     'how does ai work': 'AI works through algorithms and computational models that process data, learn patterns, and make decisions. Machine learning uses statistical techniques to enable computers to improve at tasks with experience, while deep learning uses neural networks inspired by the human brain.',
     'what are ai tools': 'AI tools are software applications that leverage artificial intelligence to perform tasks like content generation, data analysis, image creation, code writing, and automation. They help users be more productive and creative.',
+    'what is physics': 'Physics is a branch of science that studies matter, energy, and the fundamental forces and interactions that govern the behavior of the universe. It includes topics such as motion, forces, energy, waves, electricity, magnetism, and the structure of atoms.',
     'why use ai': 'AI can automate repetitive tasks, generate creative content, analyze large datasets quickly, provide personalized recommendations, and assist in decision-making processes. It helps save time and enhance productivity across various domains.'
   };
 
-  const lowerQuestion = question.toLowerCase();
+  const lowerQuestion = question.toLowerCase().trim();
   for (const [key, value] of Object.entries(responses)) {
     if (lowerQuestion.includes(key)) {
       return `Question: ${question}\n\nAnswer: ${value}\n\nThis response is designed to be accurate and informative. AI continues to evolve rapidly, so current capabilities may expand over time.`;
     }
   }
 
-  return `Question: ${question}\n\nAnswer: This appears to be a specific question. While I can provide general guidance, for the most accurate and up-to-date information on this topic, I recommend consulting reliable sources or subject matter experts.\n\nGeneral approach: Break down complex questions into smaller parts, research each component, and synthesize the information logically.`;
+  const fallbackAnswer = generateFallbackQuestionAnswer(lowerQuestion);
+  return `Question: ${question}\n\nAnswer: ${fallbackAnswer}\n\nThis response is designed to be helpful and informative.`;
+}
+
+function generateFallbackQuestionAnswer(lowerQuestion) {
+  const trimmed = lowerQuestion.replace(/\?$/, '').trim();
+
+  if (trimmed.startsWith('what is') || trimmed.startsWith('what are')) {
+    const subject = trimmed.replace(/^what (is|are)\s+/, '').trim();
+    return `${capitalize(subject)} is a concept or topic that refers to the general meaning, purpose, or definition of ${subject}. It is typically described by its main characteristics, uses, and importance.`;
+  }
+
+  if (trimmed.startsWith('how')) {
+    return 'Generally, this works by following a series of steps, using underlying principles and methods to achieve the desired result. If you provide more details, I can explain the process more specifically.';
+  }
+
+  if (trimmed.startsWith('why')) {
+    return 'This is usually because there are underlying causes, reasons, or motivations that drive the behavior or outcome. Understanding those root factors can help explain why it happens.';
+  }
+
+  if (trimmed.startsWith('when')) {
+    return 'This typically happens at a certain time or under specific conditions. The exact timing depends on the context and the factors involved.';
+  }
+
+  if (trimmed.startsWith('where')) {
+    return 'This is usually found in a particular place, environment, or context. The location or setting depends on what is being asked about.';
+  }
+
+  if (trimmed.startsWith('who')) {
+    return 'This refers to a person, group, or entity that is known for certain actions, roles, or characteristics. More context will help provide a clearer identification.';
+  }
+
+  return 'That is an interesting question. In general, it helps to break the topic into smaller parts, identify the core issue, and then explain the key ideas in a clear and concise way.';
+}
+
+function capitalize(text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
 function generateContentResponse(prompt) {
