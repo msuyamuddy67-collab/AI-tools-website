@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<title>SamTech WiFi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+ font-family: Arial, sans-serif;
+ margin:0;
+ background:#f5f6f8;
+}
+
+header{
+ background:#0a2a66;
+ color:white;
+ padding:20px;
+ text-align:center;
+}
+
+header h1{ margin:0; }
+header p{ font-size:14px; margin-top:5px; }
+
+.container{
+ padding:15px;
+ max-width:1000px;
+ margin:auto;
+}
+
+.section-title{
+ margin-top:20px;
+ color:#0a2a66;
+}
+
+.products{
+ display:grid;
+ grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+ gap:15px;
+}
+
+.card{
+ background:white;
+ padding:15px;
+ border-radius:10px;
+ box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+.price{
+ color:green;
+ font-weight:bold;
+}
+
+.note{
+ font-size:13px;
+ color:#333;
+ margin-top:5px;
+}
+
+input{
+ width:100%;
+ padding:10px;
+ margin-top:8px;
+ margin-bottom:10px;
+ border:1px solid #ccc;
+ border-radius:6px;
+}
+
+.btn{
+ display:block;
+ text-align:center;
+ padding:10px;
+ margin-top:10px;
+ border-radius:8px;
+ text-decoration:none;
+ color:white;
+ cursor:pointer;
+ border:none;
+}
+
+.whatsapp{
+ background:#25D366;
+}
+
+footer{
+ background:#111;
+ color:white;
+ text-align:center;
+ padding:15px;
+ margin-top:20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>SamTech WiFi</h1>
+<p>MiFi • Routers • Fiber • ODU Internet Solutions</p>
+</header>
+
+<div class="container">
+
+<h2 class="section-title">📡 Internet Packages & Prices</h2>
+
+<div class="products">
+
+<div class="card">
+<h3>MiFi - Yas & Universal</h3>
+<p class="price">TZS 120,000</p>
+<p class="note">Inakuja na bundle</p>
+<p class="note">Baada ya hapo: 70,000 TZS kila mwezi</p>
+</div>
+
+<div class="card">
+<h3>MiFi - Airtel</h3>
+<p class="price">TZS 45,000</p>
+<p class="note">20GB free mwezi wa kwanza</p>
+<p class="note">10k = 10GB | 20k = 20GB</p>
+</div>
+
+<div class="card">
+<h3>Router - Airtel</h3>
+<p class="price">TZS 100,000</p>
+<p class="note">Mwezi wa kwanza FREE</p>
+<p class="note">Baada ya hapo: 70,000 TZS kila mwezi</p>
+</div>
+
+<div class="card">
+<h3>Router - Vodacom</h3>
+<p class="price">TZS 250,000</p>
+<p class="note">Baada ya offer: 70,000 TZS kila mwezi</p>
+</div>
+
+</div>
+
+<h2 class="section-title">📲 Place Your Order</h2>
+<p>Jaza taarifa zako hapa chini kisha tuma order moja kwa moja WhatsApp</p>
+
+<input type="text" id="name" placeholder="Jina lako">
+<input type="text" id="location" placeholder="Location yako (mfano: Dar es Salaam)">
+
+<button class="btn whatsapp" onclick="sendWhatsApp()">
+Tuma Order WhatsApp
+</button>
+
+</div>
+
+<footer>
+<p>SamTech WiFi | Contact: 0781421038</p>
+</footer>
+
+<script>
+function sendWhatsApp(){
+ let name = document.getElementById('name').value;
+ let location = document.getElementById('location').value;
+
+ let message = 
+ "Hello SamTech WiFi,%0A" +
+ "Nahitaji order.%0A" +
+ "Jina: " + name + "%0A" +
+ "Location: " + location;
+
+ let url = "https://wa.me/255781421038?text=" + message;
+
+ window.open(url, '_blank');
+}
+</script>
+
+</body>
+</html>
