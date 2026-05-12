@@ -168,6 +168,45 @@ nav a {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
+.assistant-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.assistant-panel {
+  padding: 1.75rem;
+  border-radius: 28px;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  display: grid;
+  gap: 1rem;
+}
+
+.assistant-panel label {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.assistant-input,
+.assistant-answer {
+  width: 100%;
+  min-height: 180px;
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #f8fafc;
+  color: #111827;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.assistant-answer {
+  background: #f1f5f9;
+}
+
 .feature-card,
 .tool-card {
   padding: 1.75rem;

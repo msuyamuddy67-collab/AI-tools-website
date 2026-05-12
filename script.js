@@ -42,3 +42,25 @@ if (demoButton) {
     window.location.href = '#tools';
   });
 }
+
+const promptInput = document.getElementById('promptInput');
+const answerOutput = document.getElementById('answerOutput');
+const generateButton = document.getElementById('generateButton');
+
+function makeAIAnswer(prompt) {
+  if (!prompt.trim()) {
+    return 'Please enter a prompt above to generate an answer.';
+  }
+
+  return `Here is a strong starting point for your prompt:\n\n${prompt}\n\nSuggested response:\nUse this content to refine your message, clarify your goal, and make it more engaging. Focus on the main idea and keep the wording clear.`;
+}
+
+if (generateButton && promptInput && answerOutput) {
+  generateButton.addEventListener('click', () => {
+    answerOutput.value = 'Generating answer...';
+    window.setTimeout(() => {
+      answerOutput.value = makeAIAnswer(promptInput.value);
+      answerOutput.scrollTop = 0;
+    }, 250);
+  });
+}
